@@ -23,16 +23,16 @@ exports.deleteUser = async (req, res) => {
 
 exports.getStoredHash = async (username) => {
   try {
-    console.log("getPasswordHash", username);
+    console.log("getPasswordHash");
     const user = await User.findOne({ username: username });
-    console.log(user);
     if (user.password) {
       return user.password;
     } else {
-      return "fail";
+      return "no password found";
     }
   } catch (error) {
     console.log(error);
+    return "error in getStoredHash";
   }
 };
 
