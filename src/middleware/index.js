@@ -30,6 +30,10 @@ exports.checkPasswordAgainstDB = async (req, res, next) => {
     console.log(error.message);
     res
       .status(500)
-      .send({ err: error.message, origin: "checkPasswordAgainstDB" });
+      .send({
+        err: error.message,
+        origin: "checkPasswordAgainstDB",
+        body: req.body,
+      });
   }
 };
