@@ -32,7 +32,7 @@ exports.getStoredHash = async (username) => {
     }
   } catch (error) {
     console.log(error);
-    return "error in getStoredHash";
+    return { err: "error in getStoredHash", user: user };
   }
 };
 
