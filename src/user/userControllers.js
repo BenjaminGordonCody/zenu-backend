@@ -1,7 +1,8 @@
 const User = require("./userModel");
 
 exports.addUser = async (req, res) => {
-  console.log(req.body);
+  req.body.taskCount = {};
+  console.log("addUser", req.body);
   try {
     const newUser = await User.create(req.body);
     res.status(200).send({ user: newUser });

@@ -15,6 +15,11 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+
+  taskCount: {
+    type: Object,
+    required: false,
+  },
 });
 
 const User = mongoose.model("User", userSchema);
