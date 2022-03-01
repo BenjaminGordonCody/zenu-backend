@@ -28,12 +28,11 @@ exports.checkPasswordAgainstDB = async (req, res, next) => {
     }
   } catch (error) {
     console.log(error.message);
-    res
-      .status(500)
-      .send({
-        err: error.message,
-        origin: "checkPasswordAgainstDB",
-        body: req.body,
-      });
+    res.status(500).send({
+      err: error.message,
+      origin: "checkPasswordAgainstDB",
+      body: req.body,
+      getStoredHashReturns: await getStoredHash(req.body.username),
+    });
   }
 };
