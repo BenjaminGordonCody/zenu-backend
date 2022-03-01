@@ -13,6 +13,7 @@ exports.hashPass = async (req, res, next) => {
 };
 
 exports.checkPasswordAgainstDB = async (req, res, next) => {
+  console.log(req.body);
   try {
     if (
       await bcrypt.compare(
@@ -27,6 +28,8 @@ exports.checkPasswordAgainstDB = async (req, res, next) => {
     }
   } catch (error) {
     console.log(error.message);
-    res.status(500).send({ err: error.message });
+    res
+      .status(500)
+      .send({ err: error.message, origin: "checkPasswordAgainstDB" });
   }
 };
