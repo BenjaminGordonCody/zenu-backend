@@ -47,3 +47,23 @@ exports.giveToken = async (req, res) => {
     console.log(error);
   }
 };
+
+exports.updateTally = async (req, res) => {
+  try {
+    console.log("updateTally", req.body);
+    const updateResponse = await User.findOneAndUpdate(
+      { username: req.body.username },
+      { taskTally: JSON.stringify(req.body.newTaskTally) }
+    );
+    console.log("response", updateResponse);
+    // console. log("newUser", newUser);
+    // res.status(200).send({ user: newUser });
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({
+      err: error.message,
+      origin: "updateTally",
+      requestBody: req.body,
+    });
+  }
+};
