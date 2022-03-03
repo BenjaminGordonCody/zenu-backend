@@ -27,6 +27,6 @@ exports.checkPasswordAgainstDB = async (req, res, next) => {
     }
   } catch (error) {
     console.log(error.message);
-    res.status(500).send({ err: error.message });
+    res.status(111).send({ err: error.message });
   }
 };

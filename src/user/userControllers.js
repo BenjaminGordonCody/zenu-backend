@@ -12,6 +12,8 @@ exports.addUser = async (req, res) => {
 };
 
 exports.deleteUser = async (req, res) => {
+  console.log(req.body);
+
   try {
     const deleteUserReply = await User.deleteOne(req.body);
     res.status(200).send({ deleteCount: deleteUserReply.deletedCount });
@@ -25,10 +27,10 @@ exports.getStoredHash = async (username) => {
   try {
     console.log("getPasswordHash");
     const user = await User.findOne({ username: username });
-    if (user.password) {
+    if (user["password"]) {
       return user.password;
     } else {
-      return undefined;
+      return "";
     }
   } catch (error) {
     console.log(error);
@@ -37,10 +39,9 @@ exports.getStoredHash = async (username) => {
 
 exports.giveToken = async (req, res) => {
   try {
-    res.status(200).send({
-      token: "This user is legit",
-      username: req.body.username,
-    });
+    const user = await User.findOne({ username: req.body.username });
+    console.log(user);
+    res.status(200).send(user);
   } catch (error) {
     console.log(error);
   }
