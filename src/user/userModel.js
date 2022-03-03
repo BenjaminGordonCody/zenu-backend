@@ -15,10 +15,9 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-
-  taskCount: {
-    type: Object,
-    required: false,
+  taskTally: {
+    type: String,
+    required: true,
   },
 });
 

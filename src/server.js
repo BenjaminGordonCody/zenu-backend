@@ -1,6 +1,5 @@
 require("./db/connection");
 const express = require("express");
-const movieRouter = require("./movies/movieRoutes");
 const app = express();
 const userRouter = require("./user/userRoutes");
 const cors = require("cors");
