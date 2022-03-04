@@ -52,11 +52,11 @@ exports.giveToken = async (req, res) => {
 exports.updateTally = async (req, res) => {
   try {
     console.log("updateTally", req.body);
-    console.log(JSON.stringify(req.body.newTaskTally));
+    console.log("as string", JSON.stringify(req.body.newTaskTally));
     const updateResponse = await User.findOneAndUpdate(
       { username: req.body.username },
       { $set: { taskTally: JSON.stringify(req.body.newTaskTally) } },
-      { returnNewDocument: true }
+      { returnDocument: "after" }
     );
     console.log("response", updateResponse);
     res.status(200).send({ updatedUser: updateResponse._doc });
