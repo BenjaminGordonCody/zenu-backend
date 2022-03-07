@@ -7,4 +7,5 @@ userRouter.post("/user", hashPass, addUser);
 userRouter.delete("/user", deleteUser);
 userRouter.post("/login", checkPasswordAgainstDB, giveToken);
 
+
 module.exports = userRouter;
