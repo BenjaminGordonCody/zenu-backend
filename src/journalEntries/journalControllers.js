@@ -1,13 +1,13 @@
 const Journal = require("./journalModel");
 
 exports.addJournal = async (req, res) => {
+  console.log("req.body", req.body);
   try {
     const newJournal = await Journal.create(req.body);
     res.status(200).send({ Journal: newJournal });
   } catch (error) {
     console.log(error);
-    throw { err: error.message, body: req.body }
-    res.status(500).send();
+    res.status(500).send({ err: error.message, body: req.body });
   }
 };
 

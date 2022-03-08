@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const diarySchema = new mongoose.Schema({
+const journalSchema = new mongoose.Schema({
   username: {
     type: String,
     required: true,
@@ -15,10 +15,10 @@ const diarySchema = new mongoose.Schema({
   },
   date: {
     type: Date,
-    required: true,
-  }
+    required: false,
+  },
 });
 
-const Diary = mongoose.model("Diary", diarySchema);
+const Journal = mongoose.model("Journal", journalSchema);
 
-module.exports = Diary;
+module.exports = Journal;
