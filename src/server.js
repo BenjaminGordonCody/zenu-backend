@@ -4,7 +4,8 @@ const app = express();
 const userRouter = require("./user/userRoutes");
 const cors = require("cors");
 const journalRouter = require("./journalEntries/journalRoutes");
-const port = 5001;
+const port = process.env.PORT || 5001;
+
 
 
 app.use(express.json()); //allows API to parse JSON
