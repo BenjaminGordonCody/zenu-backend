@@ -3,6 +3,6 @@ const journalRouter = Router();
 const { addJournal, getJournal } = require("./journalControllers");
 
 journalRouter.post("/journal", addJournal);
-journalRouter.get("/journal", getJournal);
+journalRouter.post("/getPosts", getJournal);
 
 module.exports = journalRouter;
