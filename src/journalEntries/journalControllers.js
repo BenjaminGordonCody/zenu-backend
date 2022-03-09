@@ -1,7 +1,6 @@
 const Journal = require("./journalModel");
 
 exports.addJournal = async (req, res) => {
-  console.log("req.body", typeof req.body.journalObj, req.body);
   try {
     const newJournal = await Journal.create(req.body.journalObj);
     res.status(200).send({ Journal: newJournal });
