@@ -13,7 +13,7 @@ exports.addUser = async (req, res) => {
 };
 
 exports.deleteUser = async (req, res) => {
-  console.log(req.body);
+  console.log(req.body, "delete controllers 16");
 
   try {
     const deleteUserReply = await User.deleteOne(req.body);
@@ -28,14 +28,21 @@ exports.getStoredHash = async (username) => {
   try {
     console.log("getPasswordHash");
     const user = await User.findOne({ username: username });
-    if (user["password"]) {
-      return user.password;
-    } else {
-      return "";
+    if (!user) {
+      // return user,
+      return "user doesn't exist 1";
+      // console.log(username)
     }
+    else if (user["password"]) {
+      return user.password,
+        console.log("else if user pass")
+    }
+    // } else {
+    //   return "user doesn't exist 37";
+    // }
   } catch (error) {
     console.log(error);
-    return { err: "error in getStoredHash", user: user };
+    return { err: "error in getStoredHash" };
   }
 };
 
